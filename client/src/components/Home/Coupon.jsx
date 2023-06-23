@@ -1,9 +1,11 @@
+// Import required modules
 import axios from "axios";
 
 const Coupon = ({ code, amount, date, toggleEdit, setData }) => {
+  // Create a function to handle delete
   const deleteCoupon = () => {
     axios
-      .delete(`http://localhost:3001/delete/${code}`)
+      .delete(`https://discountly-server.vercel.app/delete/${code}`)
       .then((response) => {
         console.log(response);
         setData("deleted");
@@ -14,8 +16,13 @@ const Coupon = ({ code, amount, date, toggleEdit, setData }) => {
   };
 
   return (
+    // Create coupon body
     <div className="bg-white h-56 rounded flex flex-col justify-between">
-      <h1 className="text-xl font-bold bg-slate-200 text-blue-500 p-4">{code}</h1>
+      {/* Add heading */}
+      <h1 className="text-xl font-bold bg-slate-200 text-blue-500 p-4">
+        {code}
+      </h1>
+      {/* Add other details of the coupon */}
       <div className="flex flex-col gap-4 p-4 rounded">
         <p>
           Discount Amount: <span>₹ {amount}</span>
@@ -25,6 +32,7 @@ const Coupon = ({ code, amount, date, toggleEdit, setData }) => {
         </p>
       </div>
 
+      {/* Add button to edit and delete the coupon */}
       <div className="flex justify-between bg-slate-200 p-4 rounded">
         <button
           className="bg-blue-500 text-white px-4 py-1 rounded"

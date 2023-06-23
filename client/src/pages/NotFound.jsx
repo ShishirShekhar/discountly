@@ -1,3 +1,4 @@
+// Import required components
 import Nav from "../components/Nav";
 
 const NotFound = () => {
