@@ -42,7 +42,8 @@ exports.createCoupon = async (req, res) => {
 // Update existing coupon
 exports.updateCoupon = async (req, res) => {
   try {
-    const { code, discountAmount, expirationDate } = req.body;
+    const { code } = req.params;
+    const { discountAmount, expirationDate } = req.body;
 
     // Update the coupon in the database
     const updatedCoupon = await Coupon.findOneAndUpdate(
@@ -65,7 +66,7 @@ exports.updateCoupon = async (req, res) => {
 // Delete a coupon
 exports.deleteCoupon = async (req, res) => {
   try {
-    const { code } = req.body;
+    const { code } = req.params;
 
     // Find the coupon by code and delete it
     const deletedCoupon = await Coupon.findOneAndDelete({ code });

@@ -13,10 +13,10 @@ router.get("/coupons", couponController.getAllCoupon);
 router.post("/create", couponController.createCoupon);
 
 // Update the coupon
-router.patch("/update", couponController.updateCoupon);
+router.patch("/update/:code", couponController.updateCoupon);
 
 // Delete the coupon
-router.delete("/delete", couponController.deleteCoupon);
+router.delete("/delete/:code", couponController.deleteCoupon);
 
 // export the router
 module.exports = router;
