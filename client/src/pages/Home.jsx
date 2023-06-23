@@ -8,6 +8,7 @@ import Search from "../components/Home/Search";
 
 const Home = () => {
   const [coupons, setCoupons] = useState([]);
+  const [filteredCoupons, setFilteredCoupons] = useState([]);
   const [add, setAdd] = useState(false);
   const [edit, setEdit] = useState(false);
   const [data, setData] = useState("");
@@ -30,21 +31,33 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-blue-200">
       <Nav toggleAdd={() => setAdd((prev) => !prev)} />
-      <div>
-        <Search />
-      </div>
+
+      <Search coupons={coupons} setFilteredCoupons={setFilteredCoupons} />
+
       <div className="flex flex-wrap gap-4 p-4 md:p-10 min-h-screen justify-center md:justify-start">
-        {coupons.map((coupon) => (
-          <Coupon
-            key={coupon._id}
-            code={coupon.code}
-            amount={coupon.discountAmount}
-            date={formatDate(coupon.expirationDate)}
-            toggleEdit={() => setEdit((prev) => !prev)}
-            setData={setData}
-          />
-        ))}
+        {filteredCoupons.length > 0
+          ? filteredCoupons.map((coupon) => (
+              <Coupon
+                key={coupon._id}
+                code={coupon.code}
+                amount={coupon.discountAmount}
+                date={formatDate(coupon.expirationDate)}
+                toggleEdit={() => setEdit((prev) => !prev)}
+                setData={setData}
+              />
+            ))
+          : coupons.map((coupon) => (
+              <Coupon
+                key={coupon._id}
+                code={coupon.code}
+                amount={coupon.discountAmount}
+                date={formatDate(coupon.expirationDate)}
+                toggleEdit={() => setEdit((prev) => !prev)}
+                setData={setData}
+              />
+            ))}
       </div>
+
       {add && <AddCoupon add={add} setAdd={setAdd} />}
       {edit && <EditCoupon edit={edit} setEdit={setEdit} data={data} />}
     </div>
