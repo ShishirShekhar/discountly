@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Discountly is a web application that allows users to manage and track discount coupons. It provides features to add, edit, and delete coupons, as well as search for coupons based on various criteria.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js"
