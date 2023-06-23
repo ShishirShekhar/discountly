@@ -1,5 +1,6 @@
 // Import required modules
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Coupon = ({ code, amount, date, toggleEdit, setData }) => {
   // Create a function to handle delete
@@ -9,9 +10,14 @@ const Coupon = ({ code, amount, date, toggleEdit, setData }) => {
       .then((response) => {
         console.log(response);
         setData("deleted");
+
+        // Show success message
+        toast.success("Coupon deleted successfully");
       })
       .catch((error) => {
         console.log(error);
+        // show error message
+        toast.error(error);
       });
   };
 

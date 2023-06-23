@@ -1,6 +1,7 @@
 // Import required modules
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddCoupon = ({ add, setAdd }) => {
   // Create required states
@@ -44,6 +45,7 @@ const AddCoupon = ({ add, setAdd }) => {
     axios
       .post("https://discountly-server.vercel.app/create", coupon)
       .then((response) => {
+        // console log response
         console.log(response.data);
 
         // Rest every field and close the division
@@ -51,9 +53,15 @@ const AddCoupon = ({ add, setAdd }) => {
         setAmount("");
         setDate("");
         setAdd(false);
+
+        // Show success message
+        toast.success("Coupon created successfully");
       })
       .catch((error) => {
+        // console log error
         console.log(error);
+        // show error message
+        toast.error(error);
       });
   };
 

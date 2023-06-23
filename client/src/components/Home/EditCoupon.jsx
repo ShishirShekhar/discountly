@@ -1,6 +1,7 @@
 // Import required modules
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const EditCoupon = ({ edit, setEdit, data }) => {
   // Create required states
@@ -30,9 +31,14 @@ const EditCoupon = ({ edit, setEdit, data }) => {
         setAmount("");
         setDate("");
         setEdit(false);
+
+        // Show success message
+        toast.success("Coupon edited successfully");
       })
       .catch((error) => {
         console.log(error);
+        // show error message
+        toast.error(error);
       });
   };
 

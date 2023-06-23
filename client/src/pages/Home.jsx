@@ -1,6 +1,8 @@
 // Import required modules
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // Import required components
 import Coupon from "../components/Home/Coupon";
 import Nav from "../components/Nav";
@@ -39,6 +41,8 @@ const Home = () => {
     <div className="min-h-screen bg-blue-200">
       {/* Add Nav component */}
       <Nav toggleAdd={() => setAdd((prev) => !prev)} />
+      {/* Add toast container */}
+      <ToastContainer />
       {/* Add Search component */}
       <Search coupons={coupons} setFilteredCoupons={setFilteredCoupons} />
       {/* Add Coupons */}
