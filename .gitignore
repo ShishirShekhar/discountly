@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+dist/
+.build/
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+
+# Dependency lock files
+package-lock.json
+yarn.lock
