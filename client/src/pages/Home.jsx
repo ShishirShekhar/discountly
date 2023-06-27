@@ -1,7 +1,7 @@
 // Import required modules
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // Import required components
 import Coupon from "../components/Home/Coupon";
@@ -24,6 +24,12 @@ const Home = () => {
       .get(`${process.env.REACT_APP_API}/coupons`)
       .then((response) => {
         setCoupons(response.data);
+      })
+      .catch((error) => {
+        // console log error
+        console.log(error);
+        // show error message
+        toast.error(error);
       });
   }, [add, data, edit]);
 
