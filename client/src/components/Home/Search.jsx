@@ -13,6 +13,12 @@ const Search = ({ coupons, setFilteredCoupons }) => {
     setFilteredCoupons(filteredCoupons);
   };
 
+  // Create a function to handle change
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+    searchCoupon();
+  };
+
   // Create a function to handle key press
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -26,7 +32,7 @@ const Search = ({ coupons, setFilteredCoupons }) => {
       <input
         type="text"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={handleChange}
         placeholder="Search Here....."
         className="w-full rounded px-2 py-4 outline-none"
         onKeyDown={handleKeyPress}
