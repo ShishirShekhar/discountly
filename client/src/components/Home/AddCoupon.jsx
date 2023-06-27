@@ -1,11 +1,10 @@
 // Import required modules
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const AddCoupon = ({ add, setAdd }) => {
   // Create required states
-  const [code, setCode] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
 
@@ -16,7 +15,6 @@ const AddCoupon = ({ add, setAdd }) => {
 
     // Create a object of coupon
     const coupon = {
-      code: code,
       discountAmount: amount,
       expirationDate: date,
     };
@@ -29,7 +27,6 @@ const AddCoupon = ({ add, setAdd }) => {
         console.log(response.data);
 
         // Rest every field and close the division
-        setCode("");
         setAmount("");
         setDate("");
         setAdd(false);
