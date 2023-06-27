@@ -43,7 +43,7 @@ const AddCoupon = ({ add, setAdd }) => {
 
     // Post new coupon to the database
     axios
-      .post("https://discountly-server.vercel.app/create", coupon)
+      .post(`${process.env.REACT_APP_API}/create`, coupon)
       .then((response) => {
         // console log response
         console.log(response.data);

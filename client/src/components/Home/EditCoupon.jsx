@@ -23,7 +23,7 @@ const EditCoupon = ({ edit, setEdit, data }) => {
 
     // Patch the required coupon
     axios
-      .patch(`https://discountly-server.vercel.app/update/${code}`, coupon)
+      .patch(`${process.env.REACT_APP_API}/update/${code}`, coupon)
       .then((response) => {
         console.log(response.data);
 

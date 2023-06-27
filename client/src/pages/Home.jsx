@@ -21,7 +21,7 @@ const Home = () => {
   // Fetch data
   useEffect(() => {
     axios
-      .get("https://discountly-server.vercel.app/coupons")
+      .get(`${process.env.REACT_APP_API}/coupons`)
       .then((response) => {
         setCoupons(response.data);
       });

@@ -6,7 +6,7 @@ const Coupon = ({ code, amount, date, toggleEdit, setData }) => {
   // Create a function to handle delete
   const deleteCoupon = () => {
     axios
-      .delete(`https://discountly-server.vercel.app/delete/${code}`)
+      .delete(`${process.env.REACT_APP_API}/delete/${code}`)
       .then((response) => {
         console.log(response);
         setData("deleted");
