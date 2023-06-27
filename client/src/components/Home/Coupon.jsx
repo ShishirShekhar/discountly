@@ -9,8 +9,8 @@ const Coupon = ({ code, amount, date, toggleEdit, setData }) => {
       .delete(`${process.env.REACT_APP_API}/delete/${code}`)
       .then((response) => {
         console.log(response);
-        setData("deleted");
-
+        // Set data to false
+        setData(false);
         // Show success message
         toast.success("Coupon deleted successfully");
       })

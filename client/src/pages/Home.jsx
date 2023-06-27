@@ -31,7 +31,7 @@ const Home = () => {
         // show error message
         toast.error(error);
       });
-  }, [add, data, edit]);
+  }, [add, edit, data]);
 
   // Create a function to format date
   const formatDate = (dateString) => {
