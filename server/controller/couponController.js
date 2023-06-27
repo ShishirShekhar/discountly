@@ -15,12 +15,31 @@ exports.getAllCoupon = async (req, res) => {
 // Create new coupon
 exports.createCoupon = async (req, res) => {
   try {
-    const { code, discountAmount, expirationDate } = req.body;
+    const { discountAmount, expirationDate } = req.body;
 
-    // Check if the coupon already exists
+    // Create a function to generate random code
+    const generateCode = () => {
+      const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      const length = 8;
+      let result = "";
+      for (let i = 0; i < length; i++) {
+        result += characters.charAt(
+          Math.floor(Math.random() * characters.length)
+        );
+      }
+
+      return result;
+    };
+
+    code = generateCode();
+
+    // Check if the code already exists
     const existingCoupon = await Coupon.findOne({ code });
-    if (existingCoupon) {
-      return res.status(400).json({ message: "Coupon already exists" });
+    // Generate the code
+    while (existingCoupon) {
+      code = generateCode();
+      existingCoupon = await Coupon.findOne({ code });
     }
 
     // Create new coupon

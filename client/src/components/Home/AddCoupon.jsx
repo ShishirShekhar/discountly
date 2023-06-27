@@ -9,26 +9,6 @@ const AddCoupon = ({ add, setAdd }) => {
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState("");
 
-  // Generate code when clicked to add
-  useEffect(() => {
-    generateCode();
-  }, [add]);
-
-  // Create a function to generate random code
-  const generateCode = () => {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    const length = 8;
-    let result = "";
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(
-        Math.floor(Math.random() * characters.length)
-      );
-    }
-
-    setCode(result);
-  };
-
   // Create a function to handle submit
   const handleSubmit = (e) => {
     // Prevent default behavior
@@ -84,18 +64,6 @@ const AddCoupon = ({ add, setAdd }) => {
           className="flex flex-col justify-between h-5/6 gap-2 p-4"
           onSubmit={handleSubmit}
         >
-          {/* Create label and input for coupon code */}
-          <label htmlFor="code">Coupon Code:</label>
-          <input
-            type="text"
-            id="code"
-            name="code"
-            placeholder="Coupon Code"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            required
-          />
-
           {/* Create label and input for discountAmount */}
           <label htmlFor="discountAmount">Discount Amount:</label>
           <input
